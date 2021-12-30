@@ -3,9 +3,9 @@ import Header from '../components/Header';
 import Nav from '../components/Nav';
 import Results from '../components/Results';
 import requests from '../utils/requests'
-// import Image from 'next/image'
-
-
+import Viewer from '../components/Viewer';
+import { selectVideo, openVideoPlayer, closeVideoPlayer, selectOpenVideo, selectPlayerisOpen } from './features/videoSlice';
+import videoSlice from './state/videoSlice';
 export default function Home({results}) {
   // console.log(props)
   return (
@@ -16,7 +16,8 @@ export default function Home({results}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* Header */}
-        <Header />
+      <Header />
+      <Viewer />
       {/* Nav */}
       <Nav />
 
@@ -25,7 +26,6 @@ export default function Home({results}) {
     </div>
   )
 }
-
 // get props prior to render and pass it to component as props
 // renders on server prior to above o client
 export async function getServerSideProps(context) {
